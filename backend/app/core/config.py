@@ -24,5 +24,13 @@ class Settings(BaseSettings):
     OPENAI_EMBEDDING_MODEL: str = "text-embedding-3-small"
     OPENAI_TRANSCRIPTION_MODEL: str = "whisper-1"
 
+    # Comma-separated list of allowed frontend origins, e.g.
+    # "http://localhost:3000,https://campusai.vercel.app"
+    ALLOWED_ORIGINS: str = "http://localhost:3000"
+
+    @property
+    def allowed_origins_list(self) -> list[str]:
+        return [origin.strip() for origin in self.ALLOWED_ORIGINS.split(",") if origin.strip()]
+
 
 settings = Settings()
