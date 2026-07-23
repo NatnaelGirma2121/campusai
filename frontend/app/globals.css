@@ -1,0 +1,23 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  background-color: #0b0f14;
+  color: #e8edf2;
+}
+
+::selection {
+  background-color: #c0855233;
+  color: #e8edf2;
+}
+
+/* subtle circuit-grid backdrop, used behind the login card */
+.circuit-grid {
+  background-image:
+    linear-gradient(#232e3d 1px, transparent 1px),
+    linear-gradient(90deg, #232e3d 1px, transparent 1px);
+  background-size: 28px 28px;
+  background-position: center;
+  mask-image: radial-gradient(ellipse at center, black 0%, transparent 75%);
+}

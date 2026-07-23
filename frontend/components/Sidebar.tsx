@@ -1,0 +1,86 @@
+"use client";
+
+import { useEffect, useState } from "react";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { useAuth } from "@/lib/auth-context";
+import { api } from "@/lib/api";
+import { TraceDivider } from "@/components/TraceDivider";
+
+const NAV_ITEMS = [
+  { href: "/dashboard", label: "Overview", roles: ["student", "teacher", "admin"] },
+  { href: "/dashboard/notifications", label: "Notifications", roles: ["student", "teacher", "admin"] },
+  { href: "/dashboard/announcements", label: "Announcements", roles: ["student", "teacher", "admin"] },
+  { href: "/dashboard/chat", label: "Ask CampusAI", roles: ["student", "teacher", "admin"] },
+  { href: "/dashboard/tutor", label: "Course Tutor", roles: ["student"] },
+  { href: "/dashboard/study", label: "Study Tools", roles: ["student", "teacher", "admin"] },
+  { href: "/dashboard/planner", label: "Study Planner", roles: ["student"] },
+  { href: "/dashboard/resume", label: "Resume Builder", roles: ["student"] },
+  { href: "/dashboard/campus", label: "Campus Directory", roles: ["student", "teacher", "admin"] },
+  { href: "/dashboard/courses", label: "Courses", roles: ["student", "teacher", "admin"] },
+  { href: "/dashboard/roster", label: "Roster", roles: ["teacher", "admin"] },
+  { href: "/dashboard/documents", label: "Documents", roles: ["teacher", "admin"] },
+  { href: "/dashboard/grades", label: "Grades", roles: ["student"] },
+  { href: "/dashboard/attendance", label: "Attendance", roles: ["student"] },
+  { href: "/dashboard/admin", label: "Admin", roles: ["admin"] },
+];
+
+export function Sidebar() {
+  const { user, token, logout } = useAuth();
+  const pathname = usePathname();
+  const [unreadCount, setUnreadCount] = useState(0);
+
+  useEffect(() => {
+    if (!token) return;
+    api.notifications(token, true).then((n) => setUnreadCount(n.length));
+  }, [token, pathname]);
+
+  const items = NAV_ITEMS.filter((item) => user && item.roles.includes(user.role));
+
+  return (
+    <aside className="w-56 shrink-0 bg-surface border-r border-border min-h-screen flex flex-col p-5">
+      <div>
+        <p className="font-mono text-xs tracking-[0.2em] text-copper uppercase">CampusAI</p>
+        {user && (
+          <p className="text-sm text-muted mt-1 truncate">
+            {user.full_name} · <span className="capitalize">{user.role}</span>
+          </p>
+        )}
+      </div>
+
+      <TraceDivider className="my-5" />
+
+      <nav className="flex-1 space-y-1 overflow-y-auto">
+        {items.map((item) => {
+          const active = pathname === item.href;
+          const isNotifications = item.href === "/dashboard/notifications";
+          return (
+            <Link
+              key={item.href}
+              href={item.href}
+              className={`flex items-center justify-between rounded px-3 py-2 text-sm transition-colors ${
+                active
+                  ? "bg-surfaceRaised text-text border border-border"
+                  : "text-muted hover:text-text hover:bg-surfaceRaised/60"
+              }`}
+            >
+              <span>{item.label}</span>
+              {isNotifications && unreadCount > 0 && (
+                <span className="bg-copper text-bg text-[10px] font-mono rounded-full px-1.5 py-0.5 leading-none">
+                  {unreadCount}
+                </span>
+              )}
+            </Link>
+          );
+        })}
+      </nav>
+
+      <button
+        onClick={logout}
+        className="text-sm text-muted hover:text-danger transition-colors text-left px-3 py-2"
+      >
+        Sign out
+      </button>
+    </aside>
+  );
+}

@@ -1,0 +1,13 @@
+from fastapi import APIRouter, Depends
+from sqlalchemy.orm import Session
+
+from app.api.deps import get_db, require_roles
+from app.models.user import User, UserRole
+from app.schemas.user import UserRead
+
+router = APIRouter(prefix="/users", tags=["users"])
+
+
+@router.get("/", response_model=list[UserRead], dependencies=[Depends(require_roles(UserRole.admin))])
+def list_users(db: Session = Depends(get_db)) -> list[User]:
+    return db.query(User).order_by(User.created_at.desc()).all()
