@@ -18,7 +18,6 @@ depends_on: Union[str, Sequence[str], None] = None
 
 def upgrade() -> None:
     attendance_status = sa.Enum("present", "absent", "excused", "late", name="attendance_status")
-    attendance_status.create(op.get_bind(), checkfirst=True)
 
     op.create_table(
         "attendance",
@@ -39,7 +38,6 @@ def upgrade() -> None:
     grade_component = sa.Enum(
         "assignment", "quiz", "midterm", "final", "project", "participation", name="grade_component"
     )
-    grade_component.create(op.get_bind(), checkfirst=True)
 
     op.create_table(
         "grades",

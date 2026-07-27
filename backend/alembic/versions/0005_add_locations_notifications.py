@@ -21,7 +21,6 @@ def upgrade() -> None:
         "academic", "lab", "library", "cafeteria", "dormitory", "administration", "parking", "other",
         name="location_category",
     )
-    location_category.create(op.get_bind(), checkfirst=True)
 
     op.create_table(
         "campus_locations",
@@ -39,7 +38,6 @@ def upgrade() -> None:
     notification_kind = sa.Enum(
         "announcement", "attendance_risk", "grade_posted", "general", name="notification_kind"
     )
-    notification_kind.create(op.get_bind(), checkfirst=True)
 
     op.create_table(
         "notifications",

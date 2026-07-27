@@ -20,7 +20,6 @@ def upgrade() -> None:
     category = sa.Enum(
         "academic", "sports", "scholarships", "events", "emergency", name="announcement_category"
     )
-    category.create(op.get_bind(), checkfirst=True)
 
     op.create_table(
         "announcements",
