@@ -373,6 +373,22 @@ export const api = {
       token,
       body: JSON.stringify(payload),
     }),
+    updateCourse: (
+    token: string,
+    courseId: string,
+    payload: {
+      title?: string;
+      credit_hours?: number;
+      department_id?: string;
+      instructor_id?: string;
+      clear_instructor?: boolean;
+    }
+  ) =>
+    request<Course>(`/courses/${courseId}`, {
+      method: "PATCH",
+      token,
+      body: JSON.stringify(payload),
+    }),
 
   users: (token: string) => request<UserRead[]>("/users/", { token }),
 
