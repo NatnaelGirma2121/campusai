@@ -1,14 +1,23 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import { useRouter } from "next/navigation";
+import { Suspense, useEffect, useState } from "react";
+import { useRouter, useSearchParams } from "next/navigation";
 import { useAuth } from "@/lib/auth-context";
 import { api, ApiError, Department, UserRole } from "@/lib/api";
 import { TraceDivider } from "@/components/TraceDivider";
 
 export default function RegisterPage() {
+  return (
+    <Suspense fallback={null}>
+      <RegisterForm />
+    </Suspense>
+  );
+}
+
+function RegisterForm() {
   const { login } = useAuth();
   const router = useRouter();
+  const searchParams = useSearchParams();
   const [departments, setDepartments] = useState<Department[]>([]);
   const [fullName, setFullName] = useState("");
   const [email, setEmail] = useState("");
@@ -23,6 +32,15 @@ export default function RegisterPage() {
   useEffect(() => {
     api.departments().then(setDepartments).catch(() => {});
   }, []);
+
+  // Prefill from the landing page's quick-start form, if it sent us here
+  // with ?role=&department= — a real link, not just decoration.
+  useEffect(() => {
+    const roleParam = searchParams.get("role");
+    const departmentParam = searchParams.get("department");
+    if (roleParam === "student" || roleParam === "teacher") setRole(roleParam);
+    if (departmentParam) setDepartmentId(departmentParam);
+  }, [searchParams]);
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();

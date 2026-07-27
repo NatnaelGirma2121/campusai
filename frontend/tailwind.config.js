@@ -21,6 +21,15 @@ module.exports = {
         body: ["var(--font-body)", "sans-serif"],
         mono: ["var(--font-mono)", "monospace"],
       },
+      animation: {
+        "pulse-slow": "pulse-slow 3.5s ease-in-out infinite",
+      },
+      keyframes: {
+        "pulse-slow": {
+          "0%, 100%": { opacity: "0.55" },
+          "50%": { opacity: "1" },
+        },
+      },
     },
   },
   plugins: [],

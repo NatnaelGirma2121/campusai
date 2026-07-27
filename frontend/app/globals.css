@@ -21,3 +21,10 @@ body {
   background-position: center;
   mask-image: radial-gradient(ellipse at center, black 0%, transparent 75%);
 }
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-pulse-slow {
+    animation: none;
+    opacity: 0.8;
+  }
+}
