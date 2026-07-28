@@ -176,6 +176,7 @@ export default function LandingPage() {
               {user ? "Go to dashboard" : "Get started"}
             </Link>
             
+              <a
               href="#platform"
               className="border border-border hover:bg-surfaceRaised transition-colors text-text text-sm font-medium rounded px-6 py-3"
             >
@@ -214,7 +215,7 @@ export default function LandingPage() {
         </div>
 
         <div className="flex justify-center pb-10">
-          
+          <a
             href="#platform"
             aria-label="Scroll to platform section"
             className="w-11 h-11 rounded-full border border-border flex items-center justify-center text-muted hover:text-text hover:border-copper transition-colors"
