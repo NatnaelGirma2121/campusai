@@ -32,5 +32,12 @@ class Settings(BaseSettings):
     def allowed_origins_list(self) -> list[str]:
         return [origin.strip() for origin in self.ALLOWED_ORIGINS.split(",") if origin.strip()]
 
+    @property
+    def openai_base_url_normalized(self) -> str:
+        """Strips any trailing slash(es) so f-string concatenation like
+        f'{base_url}/embeddings' never produces a broken double-slash URL,
+        regardless of whether the configured value ends with a slash or not."""
+        return self.OPENAI_BASE_URL.rstrip("/")
+
 
 settings = Settings()
