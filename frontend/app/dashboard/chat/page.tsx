@@ -108,7 +108,7 @@ export default function ChatPage() {
   }
 
   return (
-    <div className="flex flex-col h-[calc(100vh-4rem)]">
+    <div className="flex flex-col h-[calc(100vh-8rem)] md:h-[calc(100vh-4rem)]">
       <div>
         <p className="font-mono text-xs tracking-[0.2em] text-copper uppercase">Chat</p>
         <h1 className="font-display text-2xl font-medium text-text mt-2">Ask CampusAI</h1>

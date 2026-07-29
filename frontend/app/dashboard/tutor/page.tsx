@@ -62,7 +62,7 @@ export default function TutorPage() {
   }
 
   return (
-    <div className="flex flex-col h-[calc(100vh-4rem)]">
+    <div className="flex flex-col h-[calc(100vh-8rem)] md:h-[calc(100vh-4rem)]">
       <div>
         <p className="font-mono text-xs tracking-[0.2em] text-copper uppercase">Tutor</p>
         <h1 className="font-display text-2xl font-medium text-text mt-2">Your course tutor</h1>
@@ -76,7 +76,7 @@ export default function TutorPage() {
         <select
           value={courseId}
           onChange={(e) => setCourseId(e.target.value)}
-          className="bg-surfaceRaised border border-border rounded px-3 py-2 text-sm text-text focus:outline-none focus:ring-2 focus:ring-signal/50 min-w-[16rem]"
+          className="bg-surfaceRaised border border-border rounded px-3 py-2 text-sm text-text focus:outline-none focus:ring-2 focus:ring-signal/50 w-full sm:w-auto sm:min-w-[16rem]"
         >
           <option value="">Select an enrolled course…</option>
           {courses.map((c) => (

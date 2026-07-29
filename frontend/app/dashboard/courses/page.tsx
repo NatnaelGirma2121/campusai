@@ -88,7 +88,7 @@ export default function CoursesPage() {
 
       <TraceDivider className="my-6" />
 
-      <div className="border border-border rounded-lg overflow-hidden">
+      <div className="border border-border rounded-lg overflow-x-auto">
         <table className="w-full text-sm">
           <thead>
             <tr className="bg-surface text-muted text-xs uppercase tracking-wide text-left">

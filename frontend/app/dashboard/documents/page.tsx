@@ -212,7 +212,7 @@ export default function DocumentsPage() {
       </form>
 
       <h2 className="font-display text-lg text-text mt-8 mb-3">Existing documents</h2>
-      <div className="border border-border rounded-lg overflow-hidden max-w-2xl">
+      <div className="border border-border rounded-lg overflow-x-auto max-w-2xl">
         <table className="w-full text-sm">
           <thead>
             <tr className="bg-surface text-muted text-xs uppercase tracking-wide text-left">

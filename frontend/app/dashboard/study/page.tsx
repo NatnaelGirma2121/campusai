@@ -58,7 +58,7 @@ export default function StudyToolsPage() {
           <select
             value={documentId}
             onChange={(e) => setDocumentId(e.target.value)}
-            className="bg-surfaceRaised border border-border rounded px-3 py-2 text-sm text-text focus:outline-none focus:ring-2 focus:ring-signal/50 min-w-[16rem]"
+            className="bg-surfaceRaised border border-border rounded px-3 py-2 text-sm text-text focus:outline-none focus:ring-2 focus:ring-signal/50 w-full sm:w-auto sm:min-w-[16rem]"
           >
             <option value="">Select a document…</option>
             {documents.map((d) => (

@@ -70,6 +70,7 @@ export default function GradesPage() {
               {courseGrades.length === 0 ? (
                 <p className="text-muted text-sm mt-3">No grades recorded yet.</p>
               ) : (
+                <div className="overflow-x-auto">
                 <table className="w-full text-sm mt-3">
                   <thead>
                     <tr className="text-muted text-xs uppercase tracking-wide text-left">
@@ -90,6 +91,7 @@ export default function GradesPage() {
                     ))}
                   </tbody>
                 </table>
+                </div>
               )}
             </div>
           );
