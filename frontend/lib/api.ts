@@ -391,6 +391,12 @@ export const api = {
     }),
 
   users: (token: string) => request<UserRead[]>("/users/", { token }),
+  updateUserRole: (token: string, userId: string, role: string) =>
+    request<UserRead>(`/users/${userId}/role`, {
+      method: "PATCH",
+      token,
+      body: JSON.stringify({ role }),
+    }),
 
   generateStudyTool: (token: string, documentId: string, mode: StudyMode) =>
     request<StudyToolResponse>("/study-tools/", {

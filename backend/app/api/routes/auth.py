@@ -12,7 +12,7 @@ from app.core.security import (
     hash_password,
     verify_password,
 )
-from app.models.user import User
+from app.models.user import User, UserRole
 from app.schemas.auth import LoginRequest, RefreshRequest, Token
 from app.schemas.user import UserCreate, UserRead
 
@@ -29,7 +29,8 @@ def register(payload: UserCreate, db: Session = Depends(get_db)) -> User:
         full_name=payload.full_name,
         email=payload.email,
         hashed_password=hash_password(payload.password),
-        role=payload.role,
+        role=UserRole(payload.role),  # UserCreate.role is restricted to student/teacher —
+        # admin can never come through here, see PATCH /users/{user_id}/role
         department_id=payload.department_id,
     )
     db.add(user)
