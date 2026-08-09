@@ -6,10 +6,11 @@ import { api, ApiError, Course, Department, UserRead } from "@/lib/api";
 import { TraceDivider } from "@/components/TraceDivider";
 
 export default function AdminPage() {
-  const { token } = useAuth();
+  const { user: currentUser, token } = useAuth();
   const [departments, setDepartments] = useState<Department[]>([]);
   const [courses, setCourses] = useState<Course[]>([]);
-  const [teachers, setTeachers] = useState<UserRead[]>([]);
+  const [allUsers, setAllUsers] = useState<UserRead[]>([]);
+  const teachers = allUsers.filter((u) => u.role === "teacher");
 
   useEffect(() => {
     if (!token) return;
@@ -20,14 +21,14 @@ export default function AdminPage() {
     if (!token) return;
     api.departments(token).then(setDepartments);
     api.courses(token).then(setCourses);
-    api.users(token).then((users) => setTeachers(users.filter((u) => u.role === "teacher")));
+    api.users(token).then(setAllUsers);
   }
 
   return (
     <div>
       <p className="font-mono text-xs tracking-[0.2em] text-copper uppercase">Admin</p>
       <h1 className="font-display text-2xl font-medium text-text mt-2">
-        Manage departments &amp; courses
+        Manage departments, courses &amp; users
       </h1>
 
       <TraceDivider className="my-6" />
