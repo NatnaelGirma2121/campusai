@@ -3,9 +3,8 @@ import uuid
 from fastapi import APIRouter, Depends, HTTPException, status
 from sqlalchemy.orm import Session
 
-from app.api.deps import get_db, require_roles
+from app.api.deps import get_db, require_super_admin
 from app.models.department import Department
-from app.models.user import UserRole
 from app.schemas.department import DepartmentCreate, DepartmentRead
 
 router = APIRouter(prefix="/departments", tags=["departments"])
@@ -24,7 +23,7 @@ def list_departments(db: Session = Depends(get_db)) -> list[Department]:
     "/",
     response_model=DepartmentRead,
     status_code=status.HTTP_201_CREATED,
-    dependencies=[Depends(require_roles(UserRole.admin))],
+    dependencies=[Depends(require_super_admin())],
 )
 def create_department(payload: DepartmentCreate, db: Session = Depends(get_db)) -> Department:
     existing = db.query(Department).filter(
@@ -43,7 +42,7 @@ def create_department(payload: DepartmentCreate, db: Session = Depends(get_db)) 
 @router.delete(
     "/{department_id}",
     status_code=status.HTTP_204_NO_CONTENT,
-    dependencies=[Depends(require_roles(UserRole.admin))],
+    dependencies=[Depends(require_super_admin())],
 )
 def delete_department(department_id: uuid.UUID, db: Session = Depends(get_db)) -> None:
     department = db.get(Department, department_id)
