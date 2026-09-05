@@ -112,7 +112,7 @@ export default function LandingPage() {
       {/* Nav */}
       <header className="max-w-6xl mx-auto flex items-center justify-between px-6 py-6">
         <div className="flex items-center gap-2">
-          <span className="font-mono text-copper text-sm">{"<NHATY />"}</span>
+          <span className="font-mono text-copper text-sm">{"<CAI />"}</span>
           <span className="font-display text-lg text-text">CampusAI</span>
         </div>
         <nav className="hidden md:flex items-center gap-8 text-sm text-muted">
@@ -337,7 +337,7 @@ export default function LandingPage() {
       <section className="border-t border-border">
         <div className="max-w-5xl mx-auto px-6 py-14">
           <div className="flex items-center gap-2 mb-10">
-            <span className="font-mono text-copper text-sm">{"<NHATY />"}</span>
+            <span className="font-mono text-copper text-sm">{"<CAI />"}</span>
             <span className="font-display text-text">CampusAI</span>
           </div>
           <TraceDivider className="mb-10" />
