@@ -247,7 +247,7 @@ function PostForm({
         <button
           type="submit"
           disabled={submitting}
-          className="ml-auto bg-copper hover:bg-copperDim disabled:opacity-50 transition-colors text-bg font-medium text-sm rounded px-4 py-2"
+          className="ml-auto bg-copper hover:bg-copperDim disabled:opacity-50 transition-colors text-ink font-medium text-sm rounded px-4 py-2"
         >
           {submitting ? "Posting…" : "Post"}
         </button>

@@ -152,7 +152,7 @@ function DepartmentPanel({
       <button
         type="submit"
         disabled={submitting}
-        className="bg-copper hover:bg-copperDim disabled:opacity-50 transition-colors text-bg font-medium text-sm rounded px-4 py-2"
+        className="bg-copper hover:bg-copperDim disabled:opacity-50 transition-colors text-ink font-medium text-sm rounded px-4 py-2"
       >
         {submitting ? "Creating…" : "Create department"}
       </button>
@@ -278,7 +278,7 @@ function CoursePanel({
       <button
         type="submit"
         disabled={submitting}
-        className="bg-copper hover:bg-copperDim disabled:opacity-50 transition-colors text-bg font-medium text-sm rounded px-4 py-2"
+        className="bg-copper hover:bg-copperDim disabled:opacity-50 transition-colors text-ink font-medium text-sm rounded px-4 py-2"
       >
         {submitting ? "Creating…" : "Create course"}
       </button>

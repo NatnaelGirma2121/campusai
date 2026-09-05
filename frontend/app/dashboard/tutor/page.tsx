@@ -135,7 +135,7 @@ export default function TutorPage() {
         <button
           type="submit"
           disabled={sending || !question.trim() || !courseId}
-          className="bg-copper hover:bg-copperDim disabled:opacity-50 transition-colors text-bg font-medium text-sm rounded px-5 py-2.5"
+          className="bg-copper hover:bg-copperDim disabled:opacity-50 transition-colors text-ink font-medium text-sm rounded px-5 py-2.5"
         >
           {sending ? "Thinking…" : "Ask"}
         </button>

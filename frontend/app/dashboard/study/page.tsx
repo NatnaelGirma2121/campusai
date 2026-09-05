@@ -76,7 +76,7 @@ export default function StudyToolsPage() {
               onClick={() => setMode(m.value)}
               className={`text-xs rounded px-3 py-2 border transition-colors ${
                 mode === m.value
-                  ? "bg-copper text-bg border-copper font-medium"
+                  ? "bg-copper text-ink border-copper font-medium"
                   : "border-border text-muted hover:text-text hover:bg-surfaceRaised"
               }`}
             >
@@ -88,7 +88,7 @@ export default function StudyToolsPage() {
         <button
           onClick={handleGenerate}
           disabled={!documentId || generating}
-          className="bg-signal hover:opacity-90 disabled:opacity-40 transition-opacity text-bg font-medium text-sm rounded px-4 py-2"
+          className="bg-signal hover:opacity-90 disabled:opacity-40 transition-opacity text-ink font-medium text-sm rounded px-4 py-2"
         >
           {generating ? "Generating…" : "Generate"}
         </button>

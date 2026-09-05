@@ -18,6 +18,7 @@ import {
 import { useAuth } from "@/lib/auth-context";
 import { api, Department } from "@/lib/api";
 import { TraceDivider } from "@/components/TraceDivider";
+import { ThemeToggle } from "@/components/ThemeToggle";
 import { HeroCircuit } from "@/components/HeroCircuit";
 
 const PLATFORM_TABS = [
@@ -126,10 +127,11 @@ export default function LandingPage() {
           </a>
         </nav>
         <div className="flex items-center gap-3">
+          <ThemeToggle />
           {user ? (
             <Link
               href="/dashboard"
-              className="bg-copper hover:bg-copperDim transition-colors text-bg text-sm font-medium rounded px-4 py-2"
+              className="bg-copper hover:bg-copperDim transition-colors text-ink text-sm font-medium rounded px-4 py-2"
             >
               Go to dashboard
             </Link>
@@ -143,7 +145,7 @@ export default function LandingPage() {
               </Link>
               <Link
                 href="/register"
-                className="bg-copper hover:bg-copperDim transition-colors text-bg text-sm font-medium rounded px-4 py-2"
+                className="bg-copper hover:bg-copperDim transition-colors text-ink text-sm font-medium rounded px-4 py-2"
               >
                 Get started
               </Link>
@@ -171,7 +173,7 @@ export default function LandingPage() {
           <div className="flex items-center justify-center gap-3 mt-8">
             <Link
               href={user ? "/dashboard" : "/register"}
-              className="bg-copper hover:bg-copperDim transition-colors text-bg text-sm font-medium rounded px-6 py-3"
+              className="bg-copper hover:bg-copperDim transition-colors text-ink text-sm font-medium rounded px-6 py-3"
             >
               {user ? "Go to dashboard" : "Get started"}
             </Link>
@@ -243,7 +245,7 @@ export default function LandingPage() {
                 onClick={() => setActiveTab(i)}
                 className={`text-xs rounded-full px-4 py-2 border transition-colors ${
                   activeTab === i
-                    ? "bg-copper text-bg border-copper font-medium"
+                    ? "bg-copper text-ink border-copper font-medium"
                     : "border-border text-muted hover:text-text hover:bg-surfaceRaised"
                 }`}
               >
@@ -295,7 +297,7 @@ export default function LandingPage() {
           </div>
           <button
             type="submit"
-            className="bg-copper hover:bg-copperDim transition-colors text-bg text-sm font-medium rounded px-6 py-2.5 flex items-center gap-2"
+            className="bg-copper hover:bg-copperDim transition-colors text-ink text-sm font-medium rounded px-6 py-2.5 flex items-center gap-2"
           >
             Get started
             <ArrowRight size={15} />

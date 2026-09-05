@@ -117,7 +117,7 @@ export default function CoursesPage() {
                           <button
                             onClick={() => handleEnroll(c.id)}
                             disabled={enrollingId === c.id}
-                            className="text-xs bg-copper hover:bg-copperDim disabled:opacity-50 transition-colors text-bg font-medium rounded px-3 py-1.5"
+                            className="text-xs bg-copper hover:bg-copperDim disabled:opacity-50 transition-colors text-ink font-medium rounded px-3 py-1.5"
                           >
                             {enrollingId === c.id ? "Enrolling…" : "Enroll"}
                           </button>

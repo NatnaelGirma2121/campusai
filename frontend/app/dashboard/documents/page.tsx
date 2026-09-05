@@ -110,7 +110,7 @@ export default function DocumentsPage() {
             }}
             className={`text-xs rounded px-3 py-1.5 border transition-colors ${
               uploadMode === mode
-                ? "bg-copper text-bg border-copper font-medium"
+                ? "bg-copper text-ink border-copper font-medium"
                 : "border-border text-muted hover:text-text hover:bg-surfaceRaised"
             }`}
           >
@@ -197,7 +197,7 @@ export default function DocumentsPage() {
               accept=".pdf,.pptx"
               required
               onChange={(e) => setFile(e.target.files?.[0] ?? null)}
-              className="w-full text-sm text-muted file:mr-3 file:rounded file:border-0 file:bg-copper file:text-bg file:px-3 file:py-1.5 file:text-xs file:font-medium"
+              className="w-full text-sm text-muted file:mr-3 file:rounded file:border-0 file:bg-copper file:text-ink file:px-3 file:py-1.5 file:text-xs file:font-medium"
             />
           </div>
         )}
@@ -205,7 +205,7 @@ export default function DocumentsPage() {
         <button
           type="submit"
           disabled={submitting}
-          className="bg-copper hover:bg-copperDim disabled:opacity-50 transition-colors text-bg font-medium text-sm rounded px-4 py-2"
+          className="bg-copper hover:bg-copperDim disabled:opacity-50 transition-colors text-ink font-medium text-sm rounded px-4 py-2"
         >
           {submitting ? "Uploading…" : "Upload"}
         </button>

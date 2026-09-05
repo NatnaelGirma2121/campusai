@@ -134,7 +134,7 @@ function RegisterForm() {
           <button
             type="submit"
             disabled={submitting}
-            className="w-full bg-copper hover:bg-copperDim disabled:opacity-50 transition-colors text-bg font-medium text-sm rounded px-3 py-2.5"
+            className="w-full bg-copper hover:bg-copperDim disabled:opacity-50 transition-colors text-ink font-medium text-sm rounded px-3 py-2.5"
           >
             {submitting ? "Creating account…" : "Create account"}
           </button>

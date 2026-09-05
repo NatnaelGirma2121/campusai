@@ -1,36 +1,91 @@
+
 /** @type {import('tailwindcss').Config} */
+
+function withOpacity(variableName) {
+
+  return ({ opacityValue }) => {
+
+    if (opacityValue !== undefined) {
+
+      return `rgb(var(${variableName}) / ${opacityValue})`;
+
+    }
+
+    return `rgb(var(${variableName}))`;
+
+  };
+
+}
+
 module.exports = {
+
   content: ["./app/**/*.{ts,tsx}", "./components/**/*.{ts,tsx}"],
+
   theme: {
+
     extend: {
+
       colors: {
-        bg: "#0B0F14",
-        surface: "#121821",
-        surfaceRaised: "#171F2A",
-        border: "#232E3D",
-        copper: "#C08552",
-        copperDim: "#8A6038",
-        signal: "#5B8DEF",
-        text: "#E8EDF2",
-        muted: "#7A8699",
-        danger: "#E5673F",
-        success: "#4FAE8A",
+
+        bg: withOpacity("--color-bg"),
+
+        surface: withOpacity("--color-surface"),
+
+        surfaceRaised: withOpacity("--color-surfaceRaised"),
+
+        border: withOpacity("--color-border"),
+
+        copper: withOpacity("--color-copper"),
+
+        copperDim: withOpacity("--color-copperDim"),
+
+        signal: withOpacity("--color-signal"),
+
+        text: withOpacity("--color-text"),
+
+        muted: withOpacity("--color-muted"),
+
+        danger: withOpacity("--color-danger"),
+
+        success: withOpacity("--color-success"),
+
+        ink: withOpacity("--color-ink"),
+
       },
+
       fontFamily: {
+
         display: ["var(--font-display)", "sans-serif"],
+
         body: ["var(--font-body)", "sans-serif"],
+
         mono: ["var(--font-mono)", "monospace"],
+
       },
+
       animation: {
+
         "pulse-slow": "pulse-slow 3.5s ease-in-out infinite",
+
       },
+
       keyframes: {
+
         "pulse-slow": {
+
           "0%, 100%": { opacity: "0.55" },
+
           "50%": { opacity: "1" },
+
         },
+
       },
+
     },
+
   },
+
   plugins: [],
+
 };
+

@@ -7,6 +7,7 @@ import { X } from "lucide-react";
 import { useAuth } from "@/lib/auth-context";
 import { api } from "@/lib/api";
 import { TraceDivider } from "@/components/TraceDivider";
+import { ThemeToggle } from "@/components/ThemeToggle";
 
 const NAV_ITEMS = [
   { href: "/dashboard", label: "Overview", roles: ["student", "teacher", "admin"] },
@@ -73,13 +74,16 @@ export function Sidebar({
               </p>
             )}
           </div>
-          <button
-            onClick={onClose}
-            aria-label="Close menu"
-            className="md:hidden text-muted hover:text-text transition-colors"
-          >
-            <X size={18} />
-          </button>
+          <div className="flex items-center gap-3">
+            <ThemeToggle />
+            <button
+              onClick={onClose}
+              aria-label="Close menu"
+              className="md:hidden text-muted hover:text-text transition-colors"
+            >
+              <X size={18} />
+            </button>
+          </div>
         </div>
 
         <TraceDivider className="my-5" />
@@ -100,7 +104,7 @@ export function Sidebar({
               >
                 <span>{item.label}</span>
                 {isNotifications && unreadCount > 0 && (
-                  <span className="bg-copper text-bg text-[10px] font-mono rounded-full px-1.5 py-0.5 leading-none">
+                  <span className="bg-copper text-ink text-[10px] font-mono rounded-full px-1.5 py-0.5 leading-none">
                     {unreadCount}
                   </span>
                 )}

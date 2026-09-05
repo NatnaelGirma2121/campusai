@@ -1,44 +1,145 @@
+
 @tailwind base;
+
 @tailwind components;
+
 @tailwind utilities;
 
+/* Color tokens as RGB channel triplets (not hex) — required so Tailwind's
+
+   opacity modifiers (bg-copper/10, border-danger/30, etc., used throughout
+
+   the app) keep working correctly once colors come from CSS variables.
+
+   Dark is the default (:root); light overrides via [data-theme="light"]. */
+
+:root {
+
+  --color-bg: 11 15 20;
+
+  --color-surface: 18 24 33;
+
+  --color-surfaceRaised: 23 31 42;
+
+  --color-border: 35 46 61;
+
+  --color-copper: 192 133 82;
+
+  --color-copperDim: 138 96 56;
+
+  --color-signal: 91 141 239;
+
+  --color-text: 232 237 242;
+
+  --color-muted: 122 134 153;
+
+  --color-danger: 229 103 63;
+
+  --color-success: 79 174 138;
+
+  /* fixed in both themes — always dark, used for text sitting on top of
+
+     copper/accent buttons, which stay readable regardless of overall theme */
+
+  --color-ink: 11 15 20;
+
+}
+
+[data-theme="light"] {
+
+  --color-bg: 247 245 241;
+
+  --color-surface: 255 255 255;
+
+  --color-surfaceRaised: 240 237 230;
+
+  --color-border: 221 216 204;
+
+  --color-copper: 166 103 46;
+
+  --color-copperDim: 138 85 31;
+
+  --color-signal: 59 111 209;
+
+  --color-text: 26 31 38;
+
+  --color-muted: 107 114 128;
+
+  --color-danger: 196 67 42;
+
+  --color-success: 47 143 104;
+
+  --color-ink: 11 15 20;
+
+}
+
 body {
-  background-color: #0b0f14;
-  color: #e8edf2;
+
+  background-color: rgb(var(--color-bg));
+
+  color: rgb(var(--color-text));
+
 }
 
 ::selection {
-  background-color: #c0855233;
-  color: #e8edf2;
+
+  background-color: rgb(var(--color-copper) / 0.2);
+
+  color: rgb(var(--color-text));
+
 }
 
 /* subtle circuit-grid backdrop, used behind the login card and the landing
+
    hero. The grid + its radial fade live on a ::before pseudo-element so the
+
    mask only ever affects the background pattern — never the real content
-   sitting on top of it (a mask-image on the element itself would fade out
-   child text too, which is what was happening before). */
+
+   sitting on top of it. */
+
 .circuit-grid {
+
   position: relative;
+
 }
 
 .circuit-grid::before {
+
   content: "";
+
   position: absolute;
+
   inset: 0;
+
   z-index: -1;
+
   pointer-events: none;
+
   background-image:
-    linear-gradient(#232e3d 1px, transparent 1px),
-    linear-gradient(90deg, #232e3d 1px, transparent 1px);
+
+    linear-gradient(rgb(var(--color-border)) 1px, transparent 1px),
+
+    linear-gradient(90deg, rgb(var(--color-border)) 1px, transparent 1px);
+
   background-size: 28px 28px;
+
   background-position: center;
+
   mask-image: radial-gradient(ellipse at center, black 0%, transparent 75%);
+
   -webkit-mask-image: radial-gradient(ellipse at center, black 0%, transparent 75%);
+
 }
 
 @media (prefers-reduced-motion: reduce) {
+
   .animate-pulse-slow {
+
     animation: none;
+
     opacity: 0.8;
+
   }
+
 }
+
